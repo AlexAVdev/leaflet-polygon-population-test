@@ -12,9 +12,11 @@ export const App = () => {
 
   useEffect(() => {
     const map = L.map('map').setView([56.34542024730709, 37.513675689697266], 11);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    L.tileLayer('http://tile.digimap.ru/rumap/{z}/{x}/{y}.png?guid=93BC6341-B35E-4B34-9DFE-26796F64BBB7', {
+      attribution: 'Map data &copy; <a href="http://maps.digimap.ru/">digimap.ru</a>'
+    }).addTo(map);
     let editFeatureGroup = new L.FeatureGroup().addTo(map);
-
+    
     const drawOptions = {
       draw: {
         polygon: {
@@ -24,6 +26,7 @@ export const App = () => {
             color: '#ff0000',
           },
         },
+         
         polyline: false,
         circle: false,
         marker: false,
